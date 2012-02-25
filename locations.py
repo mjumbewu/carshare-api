@@ -20,6 +20,8 @@ def get_pcs_locations():
     # lists.
     locations = [eval(s) for s in matches]
 
+    locations = [dict(zip(['lon', 'lat', 'id', 'name', 'vehicles'], location)) for location in locations]
+
     return locations
 
 def get_zipcar_locations():
@@ -30,6 +32,8 @@ def get_zipcar_locations():
     match = re.search(pattern, zipcar_loc_data)
 
     locations = eval(match.group(1))
+
+    locations = [dict(zip(['id', 'name', 'lon', 'lat'], location)) for location in locations]
 
     return locations
 
